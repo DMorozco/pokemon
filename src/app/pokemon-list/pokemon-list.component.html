@@ -5,6 +5,6 @@
     </tr>
     <tr *ngFor="let pokemon of pokemons.results; let i = index">
       <td>{{ i + 1 }}</td>
-      <td>{{ pokemon.name}}</td>
+      <td><a routerLink="/view/{{pokemon.name}}">{{pokemon.name}}</a></td>
     </tr>
   </table>
