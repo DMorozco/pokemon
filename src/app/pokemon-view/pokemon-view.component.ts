@@ -17,6 +17,7 @@ export class PokemonViewComponent {
     sprites: {
       front_default: ""
     },
+    types: []
   };
 
   constructor(private pokemonService: PokemonService, private route: ActivatedRoute) {} 

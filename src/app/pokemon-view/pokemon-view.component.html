@@ -1,15 +1,22 @@
-<h1>
-    <strong>{{pokemon.name}}</strong>
-</h1>
-<div>
-    <strong>height:</strong> <span>{{pokemon.height}}</span>
-</div>
-<div>
-    <strong>weight:</strong> <span>{{pokemon.weight}}</span>
-</div>
-<div>
-    <strong>id: </strong> <span>{{pokemon.id}}</span>
-</div>
-<div>
-    <img src="{{pokemon.sprites.front_default}}" alt="{{pokemon.name}}">
+<div class="max-w-md mx-auto mt-8 bg-white rounded-lg overflow-hidden shadow-md">
+    <img class="w-full h-48 object-contain" src="{{pokemon.sprites.front_default}}" alt="{{pokemon.name}}">
+    <div class="px-6 py-4">
+        <h2 class="text-xl font-bold mb-2">{{pokemon.name}}</h2>
+        <div class="mb-2">
+            <strong class="text-sm">Height:</strong>
+            <span class="text-gray-700">{{pokemon.height}}</span>
+        </div>
+        <div class="mb-2">
+            <strong class="text-sm">Weight:</strong>
+            <span class="text-gray-700">{{pokemon.weight}}</span>
+        </div>
+        <div class="mb-2">
+            <strong class="text-sm">ID:</strong>
+            <span class="text-gray-700">{{pokemon.id}}</span>
+        </div>
+        <div class="mb-2">
+            <strong class="text-sm">Type:</strong>
+            <span class="text-gray-700">{{pokemon.types.join(', ')}}</span>
+        </div>
+    </div>
 </div>

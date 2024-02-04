@@ -1,11 +1,40 @@
-<table>
-  <tr>
-    <th>Numero</th>
-    <th>Nombre</th>
-  </tr>
-  <tr *ngFor="let pokemon of pokemons.results; let i = index">
-    <td>{{ i + 1 }}</td>
-    <td><a routerLink="/view/{{pokemon.name}}">{{pokemon.name}}</a></td>
-  </tr>
-</table>
-
+<div class="overflow-x-auto">
+  <table class="min-w-full bg-white border border-gray-300">
+    <thead>
+      <tr>
+        <th (click)="sortTable('Id')" class="px-5 py-3 border-b-2 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+          Número
+        </th>
+        <th (click)="sortTable('Name')" class="px-5 py-3 border-b-2 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+          Nombre
+        </th>
+        <th (click)="sortTable('Weight')" class="px-5 py-3 border-b-2 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+          Peso
+        </th>
+        <th (click)="sortTable('Height')" class="px-5 py-3 border-b-2 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+          Altura
+        </th>
+        <th (click)="sortTable('Type')" class="px-5 py-3 border-b-2 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+          Tipo
+        </th>
+        <th class="px-5 py-3 border-b-2 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+          Imagen
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pokemon of pokemons; let i = index" class="{{ i % 2 === 0 ? 'bg-gray-100' : 'bg-white' }}">
+        <td class="px-5 py-5 border-b text-sm">{{ pokemon.Id }}</td>
+        <td class="px-5 py-5 border-b text-sm">
+          <a routerLink="/view/{{pokemon.Name}}" class="text-blue-500 hover:underline">{{pokemon.Name}}</a>
+        </td>
+        <td class="px-5 py-5 border-b text-sm">{{ pokemon.Weight }}</td>
+        <td class="px-5 py-5 border-b text-sm">{{ pokemon.Height }}</td>
+        <td class="px-5 py-5 border-b text-sm">{{ pokemon.Type }}</td>
+        <td class="px-5 py-5 border-b text-sm">
+          <img src="{{pokemon.Image}}" alt="{{pokemon.Name}}" class="w-10 h-10 object-cover rounded-full">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
