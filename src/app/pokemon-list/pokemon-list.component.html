@@ -1,12 +1,11 @@
 <table>
-    <tr>
-      <th>Nuemro</th>
-      <th>Nombre</th>
-    </tr>
-    <tr *ngFor="let pokemon of pokemons.results; let i = index">
-      <td>{{ i + 1 }}</td>
-      <td><a routerLink="/view/{{pokemon.name}}">{{pokemon.name}}</a></td>
-    </tr>
-  </table>
+  <tr>
+    <th>Numero</th>
+    <th>Nombre</th>
+  </tr>
+  <tr *ngFor="let pokemon of pokemons.results; let i = index">
+    <td>{{ i + 1 }}</td>
+    <td><a routerLink="/view/{{pokemon.name}}">{{pokemon.name}}</a></td>
+  </tr>
+</table>
 
-{{pokemonServer | json}} 
