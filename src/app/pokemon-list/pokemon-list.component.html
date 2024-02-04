@@ -1,0 +1,10 @@
+<table>
+    <tr>
+      <th>Nuemro</th>
+      <th>Nombre</th>
+    </tr>
+    <tr *ngFor="let pokemon of pokemons.results; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ pokemon.name}}</td>
+    </tr>
+  </table>
