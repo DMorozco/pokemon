@@ -1,11 +1,29 @@
 import { Component } from '@angular/core';
+import { PokemonService } from './pokemon.service';
+import { PokemonListDto } from './pokemon-dto';
 
 @Component({
   selector: 'app-pokemon-list',
   templateUrl: './pokemon-list.component.html',
   styleUrls: ['./pokemon-list.component.css']
 })
+
+
 export class PokemonListComponent {
+  test: string = "lino"
+  pokemonServer: PokemonListDto={
+    results:[]
+  };
+
+  constructor(private pokemonService: PokemonService) {}
+
+  ngOnInit(): void {
+    this.pokemonService.getAll().subscribe((allPokemons: PokemonListDto) => {
+      this.pokemonServer=allPokemons;
+    });
+  }
+
+  
   pokemons = {
     "count": 1302,
     "next": "https://pokeapi.co/api/v2/pokemon?offset=10&limit=10",
