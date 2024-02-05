@@ -1,17 +1,30 @@
-# Usa la imagen oficial de Node.js como base
-FROM node:18.16.0 AS build
+# Stage 1: Build the Angular app
+FROM node as build-stage
 
-# Configura el directorio de trabajo
+# Set the working directory
 WORKDIR /app
 
-# Copia los archivos de la aplicación
-COPY . .
+# Copy package.json and package-lock.json
+COPY package.json /app/
+COPY package-lock.json /app/
 
-# Instala las dependencias
+# Install dependencies, including Tailwind CSS, PostCSS, and postcss-cli
 RUN npm install
 
-# Ejecuta el comando postcss
-RUN npx postcss src/styles.css -o src/styles.css
+# Copy the rest of the application code
+COPY . /app
 
-# Construye la aplicación
-CMD ["npm", "start"]
+# Build the app, including Tailwind CSS processing
+RUN npm run build
+
+# Stage 2: Serve the app with Nginx
+FROM nginx:alpine as production-stage
+
+# Copy the built app from the previous stage
+COPY --from=build-stage /app/dist/ /usr/share/nginx/html
+
+# Expose port 80
+EXPOSE 80
+
+# Start Nginx and keep it running in the foreground
+CMD ["nginx", "-g", "daemon off;"]
