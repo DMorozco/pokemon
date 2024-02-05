@@ -17,7 +17,7 @@ export class PokemonService {
     return this.http.get<PokemonListDto>(`${this.baseUrl}`);
   }
 
-  getOne(pokemonname: string): Observable<PokemonPreviewDto> {
+  getByName(pokemonname: string): Observable<PokemonPreviewDto> {
     return this.http.get<PokemonPreviewDto>(`${this.baseUrlPreview + pokemonname}`);
   }
 }

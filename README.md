@@ -1,27 +1,40 @@
 # Pokemon
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 16.2.5.
 
-## Development server
+## Servidor de Desarrollo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Para ejecutar, escribe en la terminal `ng serve` para iniciar un servidor de desarrollo.
 
-## Code scaffolding
+Copia este enlace y ábrelo en el navegador `http://localhost:4200/`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Construcción
 
-## Build
+Ejecuta `ng build` para compilar el proyecto. Los archivos generados en la compilación se almacenarán en el directorio `dist/`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Ejecutar Pruebas Unitarias
 
-## Running unit tests
+Ejecuta `ng test` para ejecutar las pruebas unitarias mediante [Karma](https://karma-runner.github.io).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Ejecutar Pruebas End-to-End
 
-## Running end-to-end tests
+Ejecuta `ng e2e` para ejecutar pruebas end-to-end mediante una plataforma de tu elección. Para utilizar este comando, primero debes agregar un paquete que implemente capacidades de prueba end-to-end.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Ejecutar con Docker Compose
 
-## Further help
+Asegúrate de tener Docker instalado en tu máquina. En la raíz del proyecto de encuentra el `Dockerfile` y el archivo `docker-compose.yml` con la configuración del servicio Angular.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```yaml
+version: '3'
+services:
+  angular-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+```
+
+Ejecuta `docker-compose up --build` para iniciar la aplicación en un contenedor Docker.
+
+Usar Docker Compose es beneficioso para aislar y gestionar las dependencias de la aplicación, facilitando así su despliegue y escalabilidad. Proporciona un entorno consistente independientemente de la máquina anfitriona y garantiza que las aplicaciones se ejecuten de la misma manera en cualquier entorno Docker compatible.

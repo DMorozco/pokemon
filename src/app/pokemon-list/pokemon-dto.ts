@@ -1,28 +1,40 @@
 export interface PokemonDto {
   name: string;
   url: string;
-};
+}
 
 export interface PokemonListDto {
   results: PokemonDto[];
-};
+}
 
-interface Type {
+interface TypeDto {
   type: {
-    name: string
-  }
+    name: string;
+  };
+}
+interface StatDto {
+  base_stat: number;
+  stat: {
+    name: string;
+  };
 }
 
 export interface PokemonPreviewDto {
   id: number;
   name: string;
   sprites: {
-    front_default: string
+    front_default: string;
   };
   weight: number;
   height: number;
-  types: Type[];
-};
+  types: TypeDto[];
+  stats: StatDto[];
+}
+
+interface StatModel {
+  name: string;
+  value: number;
+}
 
 export class PokemonModel {
   [key: string]: any; // index signature: key o clave para permitir filtrar por cada atributo
@@ -32,6 +44,7 @@ export class PokemonModel {
   private weight: number;
   private height: number;
   private type: string;
+  private stats: StatModel[];
 
   constructor(pokemon: PokemonPreviewDto) {
     this.id = pokemon.id;
@@ -39,9 +52,24 @@ export class PokemonModel {
     this.weight = pokemon.weight;
     this.height = pokemon.height;
     this.image = pokemon.sprites.front_default;
-    this.type = pokemon.types.join(', ');
+    this.type = this.mappingTypes(pokemon.types);
+    this.stats = this.mappingStats(pokemon.stats);
   }
 
+  // mapeo de tipos
+  private mappingTypes(types: TypeDto[]): string {
+    return types.map((type) => type.type.name).join(', ');
+  }
+
+  // mapeo de stats
+  private mappingStats(stats: StatDto[]): StatModel[] {
+    return stats.reduce((acc, stat) => {
+      acc.push({ name: stat.stat.name, value: stat.base_stat });
+      return acc;
+    }, [] as StatModel[]);
+  }
+
+  //metocos para obtener los valores de las porpiedades privadas
   public get Id() {
     return this.id;
   }
@@ -65,4 +93,8 @@ export class PokemonModel {
   public get Type() {
     return this.type;
   }
-};
+
+  public get Stats() {
+    return this.stats;
+  }
+}

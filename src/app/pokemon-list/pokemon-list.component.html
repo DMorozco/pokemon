@@ -25,12 +25,12 @@
     <tbody>
       <tr *ngFor="let pokemon of pokemons; let i = index" class="{{ i % 2 === 0 ? 'bg-gray-100' : 'bg-white' }}">
         <td class="px-5 py-5 border-b text-sm">{{ pokemon.Id }}</td>
-        <td class="px-5 py-5 border-b text-sm">
+        <td class="capitalize px-5 py-5 border-b text-sm">
           <a routerLink="/view/{{pokemon.Name}}" class="text-blue-500 hover:underline">{{pokemon.Name}}</a>
         </td>
         <td class="px-5 py-5 border-b text-sm">{{ pokemon.Weight }}</td>
         <td class="px-5 py-5 border-b text-sm">{{ pokemon.Height }}</td>
-        <td class="px-5 py-5 border-b text-sm">{{ pokemon.Type }}</td>
+        <td class="capitalize px-5 py-5 border-b text-sm">{{ pokemon.Type}}</td>
         <td class="px-5 py-5 border-b text-sm">
           <img src="{{pokemon.Image}}" alt="{{pokemon.Name}}" class="w-10 h-10 object-cover rounded-full">
         </td>

@@ -1,22 +1,39 @@
-<div class="max-w-md mx-auto mt-8 bg-white rounded-lg overflow-hidden shadow-md">
-    <img class="w-full h-48 object-contain" src="{{pokemon.sprites.front_default}}" alt="{{pokemon.name}}">
+<div class="max-w-md mx-auto mt-8 bg-orange-100 rounded-lg overflow-hidden shadow-md border-4 border-yellow-300">
+    <img class="w-full h-48 object-contain" src="{{pokemon?.Image}}" alt="{{pokemon?.Name}}">
     <div class="px-6 py-4">
-        <h2 class="text-xl font-bold mb-2">{{pokemon.name}}</h2>
+        <h2 class="text-xl font-bold mb-2">{{pokemon?.Name}}</h2>
         <div class="mb-2">
-            <strong class="text-sm">Height:</strong>
-            <span class="text-gray-700">{{pokemon.height}}</span>
+            <strong class="text-sm">Height: </strong>
+            <span class="text-gray-700">{{pokemon?.Height}}</span>
         </div>
         <div class="mb-2">
-            <strong class="text-sm">Weight:</strong>
-            <span class="text-gray-700">{{pokemon.weight}}</span>
+            <strong class="text-sm">Weight: </strong>
+            <span class="text-gray-700">{{pokemon?.Weight}}</span>
         </div>
         <div class="mb-2">
-            <strong class="text-sm">ID:</strong>
-            <span class="text-gray-700">{{pokemon.id}}</span>
+            <strong class="text-sm">ID: </strong>
+            <span class="text-gray-700">{{pokemon?.Id}}</span>
         </div>
         <div class="mb-2">
-            <strong class="text-sm">Type:</strong>
-            <span class="text-gray-700">{{pokemon.types.join(', ')}}</span>
+            <strong class="text-sm">Type: </strong>
+            <span class="capitalize text-gray-700">{{pokemon?.Type}}</span>
         </div>
+            <strong class="text-sm">Stats: </strong>
+            <div class="mb-2">
+            <span class="text-gray-700">
+                <ng-container *ngFor="let stat of pokemon?.Stats; let last = last">
+                    <span class="capitalize text-gray-700">{{ stat.name }}: {{ stat.value }}</span>
+                    <div class="stat-bar" [style.width]="calculateProgressBarWidth(stat.value)"></div>
+              </ng-container>
+            </span>
+          </div>
+        
     </div>
+</div>
+<div class="text-center mt-4">
+    <a routerLink="/"> 
+        <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full">
+            Volver a la lista
+        </button>
+    </a>
 </div>

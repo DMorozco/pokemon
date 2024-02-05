@@ -8,11 +8,13 @@ import { PokemonViewComponent } from './pokemon-view/pokemon-view.component';
 import { PokemonService } from './pokemon-list/pokemon.service';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     PokemonListComponent,
-    PokemonViewComponent
+    PokemonViewComponent,
+
   ],
   imports: [
     BrowserModule,

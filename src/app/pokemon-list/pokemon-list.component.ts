@@ -12,23 +12,23 @@ export class PokemonListComponent {
   sortOrder: string = 'asc';
   sortBy: string = 'Id';
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(private pokemonService: PokemonService,) {}
 
   ngOnInit(): void {
+    // obtenemos la lista de los pokemones
     this.pokemonService.getAll().subscribe((allPokemons: PokemonListDto) => {
       // recorremos el arreglo de la lista de pokemones para luego encontrar el detalle de cada uno
       allPokemons.results.forEach((pokemon) => {
         this.pokemonService
-          .getOne(pokemon.name)
+          .getByName(pokemon.name)
           .subscribe((pokemonDetail: PokemonPreviewDto) => {
             // creamos una instancia (un object de tipo PokemonModel) para almacenarla en mi lista
             let newPokemon = new PokemonModel(pokemonDetail);
-
-            console.log(JSON.stringify(pokemonDetail, null, 2));
-
+            // metemos el pokemon al arreglo que mostramos en la tabla
             this.pokemons.push(newPokemon);
           });
       });
+      // ordenamos por Id
       this.sortTable('Id'); 
     });
   }
