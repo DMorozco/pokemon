@@ -1,7 +1,7 @@
 <div class="max-w-md mx-auto mt-8 bg-orange-100 rounded-lg overflow-hidden shadow-md border-4 border-yellow-300">
     <img class="w-full h-48 object-contain" src="{{pokemon?.Image}}" alt="{{pokemon?.Name}}">
     <div class="px-6 py-4">
-        <h2 class="text-xl font-bold mb-2">{{pokemon?.Name}}</h2>
+        <h2 class="capitalize text-xl font-bold mb-2">{{pokemon?.Name}} #{{pokemon?.Id}}</h2>
         <div class="mb-2">
             <strong class="text-sm">Height: </strong>
             <span class="text-gray-700">{{pokemon?.Height}}</span>
@@ -9,10 +9,6 @@
         <div class="mb-2">
             <strong class="text-sm">Weight: </strong>
             <span class="text-gray-700">{{pokemon?.Weight}}</span>
-        </div>
-        <div class="mb-2">
-            <strong class="text-sm">ID: </strong>
-            <span class="text-gray-700">{{pokemon?.Id}}</span>
         </div>
         <div class="mb-2">
             <strong class="text-sm">Type: </strong>

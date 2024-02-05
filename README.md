@@ -2,6 +2,10 @@
 
 Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 16.2.5.
 
+## Servidor de Producción
+
+Debes abri en un navegador la url https://8af0-2001-2042-7be8-7300-190d-b3ee-6a49-7ab.ngrok-free.app/ y presiona el botón visitar sitio (Visit Site).
+
 ## Servidor de Desarrollo
 
 Para ejecutar, escribe en la terminal `ng serve` para iniciar un servidor de desarrollo.

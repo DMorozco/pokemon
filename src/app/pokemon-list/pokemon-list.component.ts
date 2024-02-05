@@ -28,9 +28,9 @@ export class PokemonListComponent {
             this.pokemons.push(newPokemon);
           });
       });
-      // ordenamos por Id
-      this.sortTable('Id'); 
     });
+    // ordenamos por Id
+    this.sortTable('Id'); 
   }
 
   sortTable(column: string): void {
